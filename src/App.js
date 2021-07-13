@@ -1,22 +1,23 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react'
 import './App.css';
 
 function App() {
+  const [sw, setSW] = useState("on");
+  const c = () => {
+    setSW( (sw==="off") ? "on" : "off" )
+  };
+
+  useEffect ( () => {
+    var ttl = document.getElementById('hdr')
+    ttl.style.visibility = (sw==="on") ? "visible": "hidden";
+  }, [sw]);
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        { <h1 id='hdr' > Hello </h1> }
+        <button onClick={c} > Click me</button>
       </header>
     </div>
   );
